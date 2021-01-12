@@ -1,6 +1,3 @@
-class Shape {
-public:
-    virtual int circumference() = 0;
+#include "shape.h"
 
-    virtual int area() = 0;
-};
+

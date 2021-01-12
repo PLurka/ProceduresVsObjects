@@ -12,7 +12,7 @@ public:
     }
 
     int circumference() {
-        return 2 * M_PI * sqrt((a ^ 2 * b ^ 2) / 2);
+        return 2 * M_PI * sqrt((radiusA ^ 2 * radiusB ^ 2) / 2);
     };
 
     int area() {
