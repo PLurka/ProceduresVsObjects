@@ -15,6 +15,8 @@ public:
         sideA = a;
     }
 
+    ~Square() = default;
+
     int circumference() {
         return 4 * sideA;
     };

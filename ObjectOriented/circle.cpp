@@ -4,13 +4,21 @@
 
 class Circle : public Oval {
 protected:
-    // int radiusA, radiusB;
     int radiusCircle;
 public:
 
     Circle(int radius): Oval(radius, radius) {
         radiusCircle = radius;
     }
-    //    Circle(int radius): super(radius, radius) {
-//    }
+
+    ~Circle() = default;
+
+    int circumference() {
+        return 2 * M_PI * radiusCircle;
+    };
+
+    int area() {
+        return M_PI * (radiusA ^ 2);
+    };
+
 };
