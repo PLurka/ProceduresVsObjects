@@ -2,26 +2,21 @@
 // Created by sailor on 12.01.2021.
 //
 
-#include "shape.cpp"
-#include "quadrangle.cpp"
-#include "rectangle.cpp"
+#include "square.h"
 
-class Square : public Rectangle {
-protected:
-    int sideA;
-public:
+using namespace SquareN;
+using namespace RectangleN;
 
-    Square(int a) : Rectangle(a, a) {
-        sideA = a;
-    }
+Square::Square(int a) : Rectangle(a, a) {
+    sideA = a;
+}
 
-    ~Square() = default;
+Square::~Square() = default;
 
-    int circumference() {
-        return 4 * sideA;
-    };
+int Square::circumference() {
+    return 4 * sideA;
+}
 
-    int area() {
-        return sideA * sideA;
-    };
-};
+int Square::area() {
+    return sideA * sideA;
+}

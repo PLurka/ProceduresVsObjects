@@ -5,9 +5,19 @@
 #include "./ObjectOriented/oval.cpp" // powinno się utworzyć headery z definicjami klas i importować tylko te hedery
 #include "./ObjectOriented/triangle.cpp"
 #include "./ObjectOriented/circle.cpp"
-#include "./ObjectOriented/rectangle.cpp"
-#include "./ObjectOriented/square.cpp"
+// #include "./ObjectOriented/rectangle.cpp"
+// #include "./ObjectOriented/square.cpp"
+#include "./ObjectOriented/oval.h"
+//#include "./ObjectOriented/triangle.h"
+//#include "./ObjectOriented/circle.h"
+#include "./ObjectOriented/rectangle.h"
+#include "./ObjectOriented/square.h"
+#include "procedural.h"
 #include "main.h"
+
+using namespace Procedural;
+using namespace RectangleN;
+using namespace SquareN;
 
 using namespace std;
 
@@ -16,8 +26,8 @@ using namespace std;
 //TODO dodać jakieś opcje np wpisywanie liczby figur z klawiatury na starcie
 
 static int SHAPE_NUMBER = 1000;
-int main()
-{
+
+int main() {
     srand((unsigned) time(0)); // seeduje generator liczb losowych żeby były różne wartości
 
     // Tworzenie wektorów obiektów
@@ -26,7 +36,7 @@ int main()
     std::vector<CircleS> circles(SHAPE_NUMBER);
     std::vector<RectangleS> rectangles(SHAPE_NUMBER);
     std::vector<SquareS> squares(SHAPE_NUMBER);
-    for(int i=0; i < SHAPE_NUMBER; i++) {
+    for (int i = 0; i < SHAPE_NUMBER; i++) {
         triangles[i].base = rand() % 100 + 1;
         triangles[i].height = rand() % 100 + 1;
         triangles[i].legA = rand() % 100 + 1;
@@ -39,19 +49,20 @@ int main()
         squares[i].sideA = rand() % 100 + 1;
     }
 
-    cout<<"-------------Obiektowy---------------\n";
+    cout << "-------------Obiektowy---------------\n";
     objectProgram(triangles, ovals, circles, rectangles, squares);
-    cout<<"-------------Proceduralny-------------\n";
+    cout << "-------------Proceduralny-------------\n";
     proceduralProgram(triangles, ovals, circles, rectangles, squares);
 
     return 0;
 }
 
-void objectProgram(const vector<TriangleS>& triangles, const vector<OvalS>& ovals, const vector<CircleS>& circles,
-                   const vector<RectangleS>& rectangles, const vector<SquareS>& squares) {
+void objectProgram(const vector<TriangleS> &triangles, const vector<OvalS> &ovals, const vector<CircleS> &circles,
+                   const vector<RectangleS> &rectangles, const vector<SquareS> &squares) {
     auto start = std::chrono::high_resolution_clock::now();
-    for(auto i : triangles) {
-        Triangle triangle(i.base, i.legA, i.legB, i.height); // jak wychodzi z tej pętli to usuwa obiekt jeśli jest destruktor (???)
+    for (auto i : triangles) {
+        Triangle triangle(i.base, i.legA, i.legB,
+                          i.height); // jak wychodzi z tej pętli to usuwa obiekt jeśli jest destruktor (???)
         triangle.circumference();
         triangle.area();
     }
@@ -60,7 +71,7 @@ void objectProgram(const vector<TriangleS>& triangles, const vector<OvalS>& oval
     std::cout << "Czas obliczeń dla trójkątów obiektowo: " << elapsed.count() << " s\n";
 
     auto start1 = std::chrono::high_resolution_clock::now();
-    for(auto i : ovals) {
+    for (auto i : ovals) {
         Oval oval(i.radiusA, i.radiusB);
         oval.circumference();
         oval.area();
@@ -70,7 +81,7 @@ void objectProgram(const vector<TriangleS>& triangles, const vector<OvalS>& oval
     std::cout << "Czas obliczeń dla owali obiektowo: " << elapsed1.count() << " s\n";
 
     auto start2 = std::chrono::high_resolution_clock::now();
-    for(auto i : circles) {
+    for (auto i : circles) {
         Circle circle(i.radius);
         circle.circumference();
         circle.area();
@@ -80,7 +91,7 @@ void objectProgram(const vector<TriangleS>& triangles, const vector<OvalS>& oval
     std::cout << "Czas obliczeń dla okręgów obiektowo: " << elapsed2.count() << " s\n";
 
     auto start3 = std::chrono::high_resolution_clock::now();
-    for(auto i : rectangles) {
+    for (auto i : rectangles) {
         Rectangle rectangle(i.sideA, i.sideB);
         rectangle.circumference();
         rectangle.area();
@@ -90,7 +101,7 @@ void objectProgram(const vector<TriangleS>& triangles, const vector<OvalS>& oval
     std::cout << "Czas obliczeń dla prostokątów obiektowo: " << elapsed3.count() << " s\n";
 
     auto start4 = std::chrono::high_resolution_clock::now();
-    for(auto i : squares) {
+    for (auto i : squares) {
         Square square(i.sideA);
         square.circumference();
         square.area();
@@ -100,10 +111,10 @@ void objectProgram(const vector<TriangleS>& triangles, const vector<OvalS>& oval
     std::cout << "Czas obliczeń dla kwadratów obiektowo: " << elapsed4.count() << " s\n";
 }
 
-void proceduralProgram(const vector<TriangleS>& triangles, const vector<OvalS>& ovals, const vector<CircleS>& circles,
-                       const vector<RectangleS>& rectangles, const vector<SquareS>& squares) {
+void proceduralProgram(const vector<TriangleS> &triangles, const vector<OvalS> &ovals, const vector<CircleS> &circles,
+                       const vector<RectangleS> &rectangles, const vector<SquareS> &squares) {
     auto start = std::chrono::high_resolution_clock::now();
-    for(auto i : triangles) {
+    for (auto i : triangles) {
         calculateTriangleCircumference(i.base, i.legA, i.legB);
         calculateTriangleArea(i.base, i.height);
     }
@@ -112,7 +123,7 @@ void proceduralProgram(const vector<TriangleS>& triangles, const vector<OvalS>& 
     std::cout << "Czas obliczeń dla trójkątów proceduralnie: " << elapsed.count() << " s\n";
 
     auto start1 = std::chrono::high_resolution_clock::now();
-    for(auto i : ovals) {
+    for (auto i : ovals) {
         calculateOvalCircumference(i.radiusA, i.radiusB);
         calculateOvalArea(i.radiusA, i.radiusB);
     }
@@ -121,7 +132,7 @@ void proceduralProgram(const vector<TriangleS>& triangles, const vector<OvalS>& 
     std::cout << "Czas obliczeń dla owali proceduralnie: " << elapsed1.count() << " s\n";
 
     auto start2 = std::chrono::high_resolution_clock::now();
-    for(auto i : circles) {
+    for (auto i : circles) {
         calculateCircleCircumference(i.radius);
         calculateCircleArea(i.radius);
     }
@@ -130,7 +141,7 @@ void proceduralProgram(const vector<TriangleS>& triangles, const vector<OvalS>& 
     std::cout << "Czas obliczeń dla okręgów proceduralnie: " << elapsed2.count() << " s\n";
 
     auto start3 = std::chrono::high_resolution_clock::now();
-    for(auto i : rectangles) {
+    for (auto i : rectangles) {
         calculateRectangleCircumference(i.sideA, i.sideB);
         calculateRectangleArea(i.sideA, i.sideB);
     }
@@ -139,7 +150,7 @@ void proceduralProgram(const vector<TriangleS>& triangles, const vector<OvalS>& 
     std::cout << "Czas obliczeń dla prostokątów proceduralnie: " << elapsed3.count() << " s\n";
 
     auto start4 = std::chrono::high_resolution_clock::now();
-    for(auto i : squares) {
+    for (auto i : squares) {
         calculateSquareCircumference(i.sideA);
         calculateSquareArea(i.sideA);
     }
