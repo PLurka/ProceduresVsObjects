@@ -5,9 +5,10 @@
 #include "shape.h"
 #include "quadrangle.h"
 
-
 #ifndef PROCEDURESVSOBJECTS_RECTANGLE_H
 #define PROCEDURESVSOBJECTS_RECTANGLE_H
+
+using namespace QuadrangleN;
 
 namespace RectangleN
 {

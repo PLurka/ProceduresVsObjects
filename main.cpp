@@ -2,34 +2,33 @@
 #include <iostream>
 #include <ctime>
 #include <chrono>
-#include "./ObjectOriented/oval.cpp" // powinno się utworzyć headery z definicjami klas i importować tylko te hedery
-#include "./ObjectOriented/triangle.cpp"
-#include "./ObjectOriented/circle.cpp"
-// #include "./ObjectOriented/rectangle.cpp"
-// #include "./ObjectOriented/square.cpp"
 #include "./ObjectOriented/oval.h"
-//#include "./ObjectOriented/triangle.h"
-//#include "./ObjectOriented/circle.h"
+#include "./ObjectOriented/triangle.h"
+#include "./ObjectOriented/circle.h"
 #include "./ObjectOriented/rectangle.h"
 #include "./ObjectOriented/square.h"
 #include "procedural.h"
 #include "main.h"
 
 using namespace Procedural;
+using namespace OvalN;
+using namespace CircleN;
+using namespace TriangleN;
 using namespace RectangleN;
 using namespace SquareN;
 
 using namespace std;
 
-//TODO uzupełnić nagłówki definicjami a cpp deklaracjami
-//TODO posprzątać kod - utworzyć plik cpp Procedural w osobnym folderze i zaimportować do maina
-//TODO dodać jakieś opcje np wpisywanie liczby figur z klawiatury na starcie
-
-static int SHAPE_NUMBER = 1000;
+int SHAPE_NUMBER = 1000;
 
 int main() {
-    srand((unsigned) time(0)); // seeduje generator liczb losowych żeby były różne wartości
 
+    cout<<"Porównywanie czasów działania programu obiektowego i "
+          "proceduralnego na przykładzie obliczania pól i obwodów figur geometrycznych\n";
+    cout<<"Podaj liczbę figur geometrycznych: ";
+    cin >> SHAPE_NUMBER;
+    cout << "Obliczanie pól i obwodów dla " << SHAPE_NUMBER << " figur każdego typu...\n";
+    srand((unsigned) time(0)); // seeduje generator liczb losowych żeby były różne wartości
     // Tworzenie wektorów obiektów
     std::vector<TriangleS> triangles(SHAPE_NUMBER);
     std::vector<OvalS> ovals(SHAPE_NUMBER);
@@ -63,7 +62,8 @@ void objectProgram(const vector<TriangleS> &triangles, const vector<OvalS> &oval
     for (auto i : triangles) {
         Triangle triangle(i.base, i.legA, i.legB,
                           i.height); // jak wychodzi z tej pętli to usuwa obiekt jeśli jest destruktor (???)
-        triangle.circumference();
+//        cout << "Pole: " <<  triangle.circumference() << " Boki: ";
+//        cout << i.base << " " << i.legA << " " << i.legB << " ";
         triangle.area();
     }
     auto finish = std::chrono::high_resolution_clock::now();

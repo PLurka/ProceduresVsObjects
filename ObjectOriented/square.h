@@ -9,10 +9,10 @@
 
 #ifndef PROCEDURESVSOBJECTS_SQUARE_H
 #define PROCEDURESVSOBJECTS_SQUARE_H
-
+using namespace RectangleN;
 namespace SquareN
 {
-    class Square : public RectangleN::Rectangle {
+    class Square : public Rectangle {
     protected:
         int sideA;
     public:

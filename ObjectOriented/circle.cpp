@@ -1,24 +1,19 @@
-#include "shape.cpp"
-#include "oval.cpp"
-#include <math.h>
+#include "circle.h"
+#include <cmath>
 
-class Circle : public Oval {
-protected:
-    int radiusCircle;
-public:
+using namespace OvalN;
+using namespace CircleN;
 
-    Circle(int radius): Oval(radius, radius) {
-        radiusCircle = radius;
-    }
+Circle::Circle(int radius) : Oval(radius, radius) {
+    radiusCircle = radius;
+}
 
-    ~Circle() = default;
+Circle::~Circle() = default;
 
-    int circumference() {
-        return 2 * M_PI * radiusCircle;
-    };
+int Circle::circumference() {
+    return 2 * M_PI * radiusCircle;
+}
 
-    int area() {
-        return M_PI * (radiusA ^ 2);
-    };
-
-};
+int Circle::area() {
+    return M_PI * (radiusCircle ^ 2);
+}

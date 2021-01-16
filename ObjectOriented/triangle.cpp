@@ -1,20 +1,33 @@
-#include "shape.cpp"
+#include "triangle.h"
 
-class Triangle : public Shape {
-protected:
-    int base, legA, legB, height;
-public:
+using namespace TriangleN;
+//class Triangle : public Shape {
+//protected:
+//    int base, legA, legB, height;
+//public:
+//
+//    Triangle(int base, int legA, int legB, int height) : base(base), legA(legA), legB(legB), height(height) {
+//    }
+//
+//    ~Triangle() = default;
+//
+//    int circumference() {
+//        return base + legA + legB;
+//    };
+//
+//    int area() {
+//        return (base * height) / 2;
+//    };
+//};
+Triangle::Triangle(int base, int legA, int legB, int height)
+        : base(base), legA(legA), legB(legB), height(height){}
 
-    Triangle(int base, int legA, int legB, int height) : base(base), legA(legA), legB(legB), height(height) {
-    }
+Triangle::~Triangle() = default;
 
-    ~Triangle() = default;
+int Triangle::circumference() {
+    return base + legA + legB;
+}
 
-    int circumference() {
-        return base + legA + legB;
-    };
-
-    int area() {
-        return (base * height) / 2;
-    };
-};
+int Triangle::area() {
+    return (base * height) / 2;
+}
