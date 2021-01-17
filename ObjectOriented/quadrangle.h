@@ -15,9 +15,8 @@ namespace QuadrangleN {
     protected:
         int sideA, sideB, sideC, sideD;
     public:
-        int circumference() override = 0;
-
-        int area() override = 0;
+        double circumference() override = 0;
+        double area() override = 0;
     };
 }
 

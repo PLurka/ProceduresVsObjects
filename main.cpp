@@ -28,7 +28,7 @@ int main() {
     cout<<"Podaj liczbę figur geometrycznych: ";
     cin >> SHAPE_NUMBER;
     cout << "Obliczanie pól i obwodów dla " << SHAPE_NUMBER << " figur każdego typu...\n";
-    srand((unsigned) time(0)); // seeduje generator liczb losowych żeby były różne wartości
+    srand((unsigned) time(0));
     // Tworzenie wektorów obiektów
     std::vector<TriangleS> triangles(SHAPE_NUMBER);
     std::vector<OvalS> ovals(SHAPE_NUMBER);
@@ -61,9 +61,7 @@ void objectProgram(const vector<TriangleS> &triangles, const vector<OvalS> &oval
     auto start = std::chrono::high_resolution_clock::now();
     for (auto i : triangles) {
         Triangle triangle(i.base, i.legA, i.legB,
-                          i.height); // jak wychodzi z tej pętli to usuwa obiekt jeśli jest destruktor (???)
-//        cout << "Pole: " <<  triangle.circumference() << " Boki: ";
-//        cout << i.base << " " << i.legA << " " << i.legB << " ";
+                          i.height);
         triangle.area();
     }
     auto finish = std::chrono::high_resolution_clock::now();

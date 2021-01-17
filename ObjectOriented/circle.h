@@ -15,8 +15,8 @@ namespace CircleN
     public:
         explicit Circle(int radius);
         ~Circle();
-        int circumference() override;
-        int area() override;
+        double circumference() override;
+        double area() override;
     };
 }
 #endif //PROCEDURESVSOBJECTS_CIRCLE_H

@@ -10,10 +10,10 @@ Circle::Circle(int radius) : Oval(radius, radius) {
 
 Circle::~Circle() = default;
 
-int Circle::circumference() {
+double Circle::circumference() {
     return 2 * M_PI * radiusCircle;
 }
 
-int Circle::area() {
+double Circle::area() {
     return M_PI * (radiusCircle ^ 2);
 }

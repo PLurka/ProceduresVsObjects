@@ -10,10 +10,10 @@ Oval::Oval(int radA, int radB) {
 
 Oval::~Oval() = default;
 
-int Oval::circumference() {
+double Oval::circumference() {
     return 2 * M_PI * sqrt((radiusA ^ 2 * radiusB ^ 2) / 2);
 }
 
-int Oval::area() {
+double Oval::area() {
     return M_PI * radiusA * radiusB;
 }

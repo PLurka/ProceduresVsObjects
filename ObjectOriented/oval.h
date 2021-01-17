@@ -19,8 +19,8 @@ namespace OvalN
     public:
         Oval(int radA, int radB);
         ~Oval();
-        int circumference() override;
-        int area() override;
+        double circumference() override;
+        double area() override;
     };
 }
 #endif //PROCEDURESVSOBJECTS_OVAL_H

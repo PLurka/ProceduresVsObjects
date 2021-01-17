@@ -12,10 +12,10 @@ Rectangle::Rectangle(int a, int b) {
 
 Rectangle::~Rectangle() = default;
 
-int Rectangle::circumference() {
+double Rectangle::circumference() {
     return 2 * sideA + 2 * sideB;
 }
 
-int Rectangle::area() {
+double Rectangle::area() {
     return sideA * sideB;
 }

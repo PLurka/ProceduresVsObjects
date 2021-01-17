@@ -17,8 +17,8 @@ namespace TriangleN
     public:
         Triangle(int base, int legA, int legB, int height);
         ~Triangle();
-        int circumference() override;
-        int area() override;
+        double circumference() override;
+        double area() override;
     };
 }
 

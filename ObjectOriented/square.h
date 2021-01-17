@@ -18,8 +18,8 @@ namespace SquareN
     public:
         explicit Square(int a);
         ~Square();
-        int circumference() override;
-        int area() override;
+        double circumference() override;
+        double area() override;
     };
 }
 

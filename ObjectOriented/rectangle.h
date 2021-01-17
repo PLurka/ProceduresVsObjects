@@ -18,8 +18,8 @@ namespace RectangleN
     public:
         Rectangle(int a, int b);
         ~Rectangle();
-        int circumference() override;
-        int area() override;
+        double circumference() override;
+        double area() override;
     };
 }
 #endif //PROCEDURESVSOBJECTS_RECTANGLE_H

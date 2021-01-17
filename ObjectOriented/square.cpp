@@ -13,10 +13,10 @@ Square::Square(int a) : Rectangle(a, a) {
 
 Square::~Square() = default;
 
-int Square::circumference() {
+double Square::circumference() {
     return 4 * sideA;
 }
 
-int Square::area() {
+double Square::area() {
     return sideA * sideA;
 }

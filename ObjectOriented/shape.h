@@ -10,8 +10,8 @@
 namespace ShapeN {
     class Shape {
     public:
-        virtual int circumference() = 0;
-        virtual int area() = 0;
+        virtual double circumference() = 0;
+        virtual double area() = 0;
     };
 }
 
