@@ -62,6 +62,7 @@ void objectProgram(const vector<TriangleS> &triangles, const vector<OvalS> &oval
     for (auto i : triangles) {
         Triangle triangle(i.base, i.legA, i.legB,
                           i.height);
+        triangle.circumference();
         triangle.area();
     }
     auto finish = std::chrono::high_resolution_clock::now();
